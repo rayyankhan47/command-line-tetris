@@ -1,7 +1,26 @@
 #include <iostream>
 using namespace std;
 
-wstring tetromino[7];
+wstring tetromino[7]; // The tetromino itself
+int nFieldWidth = 12; // The playing field
+int nFieldHeight = 18;
+unsigned char *pField = nullptr;
+
+int Rotate(int px, int py, int r)
+{
+    switch (r % 4)
+    {
+    case 0:
+        return py * 4 + px; // 0 degrees of rotation, clockwise
+    case 1:
+        return 12 + py - (px * 4); // 90 degrees of rotation
+    case 2:
+        return 15 - (py * 4) - px; // 180 degrees of rotation
+    case 3:
+        return 3 - py + (px * 4); // 270 degrees of rotation
+    }
+    return 0;
+}
 
 int main()
 {
