@@ -1,4 +1,5 @@
 #include <iostream>
+// #include <Windows.h>, this won't work on mac. So I will rewrite this file suited for macOS later.
 using namespace std;
 
 wstring tetromino[7]; // The tetromino itself
