@@ -2,8 +2,6 @@
 #include <Windows.h>
 using namespace std;
 
-// Test comment
-// Test comment 2, git y u do dis
 
 wstring tetromino[7]; // The tetromino itself
 int nFieldWidth = 12; // The playing field
