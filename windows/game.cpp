@@ -82,9 +82,13 @@ int main()
     while(!bGameOver)
     {
 
+    // Draw Field
+    
+    // (to be continued)
+
     // Display Frame
     WriteConsoleOutputCharacter(hConsole, screen, nScreenWidth * nScreenHeight, { 0, 0 }, &dwBytesWritten);
-    
+
     }
 
 
