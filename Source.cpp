@@ -41,5 +41,6 @@ int main()
     tetromino[6].append(L".XX.");
     tetromino[6].append(L".X..");
     tetromino[6].append(L".X..");
+
     return 0;
 }
