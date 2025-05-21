@@ -1,11 +1,14 @@
 #include <iostream>
-// #include <Windows.h>, this won't work on mac. So I will rewrite this file suited for macOS later.
+#include <Windows.h>
 using namespace std;
 
 wstring tetromino[7]; // The tetromino itself
 int nFieldWidth = 12; // The playing field
 int nFieldHeight = 18;
 unsigned char *pField = nullptr;
+
+int nScreenWidth = 80; // Console Screen Size X (columns)
+int nScreenHeight = 30; // Console Screen Size Y (rows)
 
 int Rotate(int px, int py, int r)
 {
@@ -65,7 +68,17 @@ int main()
     pField = new unsigned char[nFieldWidth * nFieldHeight]; // Create play field buffer
     for (int x = 0; x < nFieldWidth; x++)                   // Board Boundary
         for (int y = 0; y < nFieldHeight; y++)
-            pField[y * nFieldWidth + x] = (x == 0 || x == nFieldWidth - 1 || y == nFieldHeight - 1) ? 9 : 0;
+            pField[y * nFieldWidth + x] = (x == 0 || x == nFieldWidth - 1 || y == nFieldHeight - 1) ? 9 : 0; // 9 represents the border
+    
+    wchar_t *screen = new wchar_t[nScreenWidth*nScreenHeight];
+    for (int i = 0; i < nScreenWidth*nScreenHeight; i++) screen[i] = L' ';
+    HANDLE hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
+    SetConsoleActiveScreenBuffer(hConsole);
+    DWORD dwBytesWritten = 0;
+
+
+    // Display Frame
+    WriteConsoleOutputCharacter(hConsole, screen, nScreenWidth * nScreenHeight, { 0, 0 }, &dwBytesWritten);
 
     return 0;
 }
