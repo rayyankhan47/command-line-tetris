@@ -77,9 +77,16 @@ int main()
     SetConsoleActiveScreenBuffer(hConsole);
     DWORD dwBytesWritten = 0;
 
+    bool bGameOver = false;
+
+    while(!bGameOver)
+    {
 
     // Display Frame
     WriteConsoleOutputCharacter(hConsole, screen, nScreenWidth * nScreenHeight, { 0, 0 }, &dwBytesWritten);
+    
+    }
+
 
     return 0;
 }
